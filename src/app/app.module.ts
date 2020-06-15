@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { ContactCardComponent } from './components/contact-card/contact-card.com
 import { CreateButtonComponent } from './components/create-button/create-button.component';
 import { CreateContactComponent } from './pages/create-contact/create-contact.component';
 import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { EditContactComponent } from './pages/edit-contact/edit-contact.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

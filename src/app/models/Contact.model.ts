@@ -23,8 +23,8 @@ export class Contact implements IContact {
     constructor(
         firstName: string,
         cellPhone: number,
-        email?: string,
         firstSurname?: string,
+        email?: string,
         secondName?: string,
         secondSurname?: string,
         phone?: number,
@@ -39,8 +39,8 @@ export class Contact implements IContact {
         image?: string,
         nick?: string
     ) {
-        this.id =
-            this.firstName = firstName;
+        this.id = Math.floor(Math.random() * (999999999 - 111111111 + 1) + 111111111).toString();
+        this.firstName = firstName;
         this.cellPhone = cellPhone;
         this.firstSurname = firstSurname || '';
         this.email = email || '';
@@ -54,7 +54,6 @@ export class Contact implements IContact {
         this.github = github || '';
         this.instagram = instagram || '';
         this.notes = notes || '';
-        this.birthday = birthday || new Date('0000-0-00');
         this.image = image || '';
         this.nick = nick || '';
     }

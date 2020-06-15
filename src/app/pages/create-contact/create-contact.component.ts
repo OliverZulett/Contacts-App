@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { IContact } from '../../models/Contact.interface';
+import { Contact } from '../../models/Contact.model';
 
 @Component({
   selector: 'app-create-contact',
@@ -7,9 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateContactComponent implements OnInit {
 
+  contact: IContact;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  save( CreateUserForm: NgForm ) {
+    // console.log('mas tocao');
+    console.log(CreateUserForm);
+    console.log(CreateUserForm.value);
+
+    const newContact: IContact = CreateUserForm.value;
+
+    if (CreateUserForm.valid) {
+      this.contact = new Contact(
+        newContact.firstName,
+        newContact.cellPhone,
+        newContact.firstSurname,
+        newContact.email
+      );
+      console.log('nuevo contacto: ', this.contact);
+    } else {
+      Object.values( CreateUserForm.controls ).forEach( control => {
+        control.markAsTouched();
+      })
+      console.log('los datos no son validos');
+    }
+
   }
 
 }

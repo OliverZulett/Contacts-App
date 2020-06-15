@@ -1,4 +1,4 @@
-h1, label {
+h1, label, p {
     color: var(--first_color);
 }
 
@@ -20,6 +20,13 @@ label {
 input {
     font-weight: 100;
 }
+
+/* alerts */
+.is-wrong {
+    border-bottom: 4px solid #E91E63;
+    color: #F44336;
+}
+
 
 /* Responsive */
 @media (max-width: 575px) {
