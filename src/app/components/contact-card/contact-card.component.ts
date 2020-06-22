@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { IContact } from 'src/app/models/Contact.interface';
 
 @Component({
   selector: 'app-contact-card',
@@ -7,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./contact-card.component.css']
 })
 export class ContactCardComponent implements OnInit {
+
+  @Input() contact: IContact;
 
   constructor( private router: Router) { }
 

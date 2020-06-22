@@ -2,7 +2,7 @@
   <div class="contact-image d-flex justify-content-center">
     <div class="d-flex justify-content-center align-content-center pt-4 pb-2">
       <img
-        src="https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+        [src]="contact.image || '../../../assets/default-profile.png'"  
         alt="contact-image"
         srcset=""
       />
@@ -10,18 +10,18 @@
   </div>
   <div class="contact-info d-flex flex-column text-center">
     <h3 class="name">
-      Nora jhons
+      {{contact.firstName}}
     </h3>
-    <p class="phone m-0">
+    <p *ngIf="contact.cellPhone" class="phone m-0">
       <i class="fa fa-phone"></i>
-      +591 252354
+      +591 {{contact.cellPhone}}
     </p>
-    <p class="email m-0">
+    <p *ngIf="contact.email" class="email m-0">
       <i class="fa fa-envelope-open"></i>
-      nora@nora.com
+      {{contact.email}}
     </p>
   </div>
-  <div class="contact-links d-flex justify-content-center mt-1 mb-1">
+  <div *ngIf="contact.facebook || contact.instagram" class="contact-links d-flex justify-content-center mt-1 mb-1">
     <ul class="d-flex m-0 p-0">
       <li class="ml-2 mr-2">
         <a href="">
@@ -40,7 +40,7 @@
       </li>
     </ul>
   </div>
-  <div class="contact-details d-flex justify-content-center mb-4">
+  <div class="contact-details d-flex justify-content-center mb-4 mt-3">
     <button (click)="navigate()" type="button" class="btn draw-border mt-2 mt-sm-0">
       DETALLES
     </button>

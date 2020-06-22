@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IContact } from '../../models/Contact.interface';
 import { Contact } from '../../models/Contact.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-contact',
@@ -11,14 +12,16 @@ import { Contact } from '../../models/Contact.model';
 export class CreateContactComponent implements OnInit {
 
   contact: IContact;
+  contacts: IContact[];
 
-  constructor() { }
+  constructor( private router: Router ) {
+    this.verifyLocalStorage();
+  }
 
   ngOnInit(): void {
   }
 
   save( CreateUserForm: NgForm ) {
-    // console.log('mas tocao');
     console.log(CreateUserForm);
     console.log(CreateUserForm.value);
 
@@ -31,14 +34,38 @@ export class CreateContactComponent implements OnInit {
         newContact.firstSurname,
         newContact.email
       );
-      console.log('nuevo contacto: ', this.contact);
+      console.log('nuevo contacto creado: ', this.contact);
+      this.contacts.push(this.contact);
+      this.saveToLocalStorage();
+      this.router.navigate(['/Lista']);
     } else {
       Object.values( CreateUserForm.controls ).forEach( control => {
         control.markAsTouched();
-      })
+      });
       console.log('los datos no son validos');
     }
 
+  }
+
+  saveContact() {
+    let contacts: IContact[];
+    contacts = JSON.parse(localStorage.getItem('contacts'));
+  }
+
+  private saveToLocalStorage() {
+    localStorage.setItem('contacts', JSON.stringify(this.contacts));
+  }
+
+  private verifyLocalStorage() {
+    if (localStorage.getItem('contacts')) {
+      this.loadFromLocalStarage();
+    } else {
+      this.contacts = [];
+    }
+  }
+
+  private loadFromLocalStarage() {
+    this.contacts = JSON.parse(localStorage.getItem('contacts'));
   }
 
 }
