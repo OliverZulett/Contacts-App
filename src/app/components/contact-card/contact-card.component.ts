@@ -18,7 +18,7 @@ export class ContactCardComponent implements OnInit {
 
   navigate() {
     // console.log('mas tocao');
-    this.router.navigate(['/Contacto']);
+    this.router.navigate([`/Contacto/${this.contact.id}`]);
   }
 
 }

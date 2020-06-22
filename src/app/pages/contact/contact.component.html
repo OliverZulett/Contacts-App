@@ -1,25 +1,30 @@
 <div class="image-contact d-flex justify-content-center mt-4">
   <div>
     <img
-      src="https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+      [src]="contact.image || '../../../assets/default-profile.png'"
       alt="image-contact"
       srcset=""
     />
   </div>
 </div>
-<h1 class="text-center mb-4 mt-4">Jhon Doe</h1>
+<h1 class="text-center mb-4 mt-4">{{contact.firstName}}</h1>
 <div class="pl-2 pr-2 pl-md-5 pr-md-5">
-  <form class="d-flex flex-column">
+
+  <form [formGroup]="formContact" class="d-flex flex-column">
     <!-- personal data -->
     <h3>Datos personales</h3>
 
-    <div class="d-flex flex-column flex-md-row">
+    <div 
+      formGroupName="personalData"
+      class="d-flex flex-column flex-md-row"
+    >
       <!-- First  Name-->
       <div class="form-group p-3">
         <label for="firstName">
           Primer nombre:
         </label>
         <input
+          formControlName="firstName"
           id="firstName"
           class="form-control"
           name="firstName"
