@@ -24,10 +24,20 @@ export class ContactComponent implements OnInit {
     this.buildForm();
   }
 
+  updateContact(): void {
+    // console.log(this.formContact);
+    this.contact = {...this.contact, ...this.formContact.value.personalData};
+    const index: number = this.contacts.findIndex( contact => contact.id === this.contact.id);
+    this.contacts[index] = this.contact;
+    this.saveContactsToLocalStorage();
+    // console.log(this.contact);
+    // console.log(this.contacts);
+  }
+
   ngOnInit(): void {
   }
 
-  private setId() {
+  private setId(): void {
     this.id = this.router.params.pipe(map(p => p.id));
   }
 
@@ -38,7 +48,7 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  private loadContacts() {
+  private loadContacts(): void {
     this.contacts = JSON.parse(localStorage.getItem('contacts'));
   }
 
@@ -47,10 +57,60 @@ export class ContactComponent implements OnInit {
       personalData: new FormGroup({
         firstName: new FormControl(
           this.contact.firstName,
-          Validators.required
+          [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.pattern('[A-Za-z]+')
+          ]
+        ),
+        secondName: new FormControl(
+          this.contact.secondName,
+          [
+            Validators.minLength(2),
+            Validators.pattern('[A-Za-z]+')
+          ]
+        ),
+        firstSurname: new FormControl(
+          this.contact.firstSurname,
+          [
+            Validators.minLength(2),
+            Validators.pattern('[A-Za-z]+')
+          ]
+        ),
+        secondSurname: new FormControl(
+          this.contact.secondSurname,
+          [
+            Validators.minLength(2),
+            Validators.pattern('[A-Za-z]+')
+          ]
+        ),
+        cellPhone: new FormControl(
+          this.contact.cellPhone,
+          [
+            Validators.minLength(7),
+            Validators.maxLength(8)
+          ]
+        ),
+        email: new FormControl(
+          this.contact.email,
+          Validators.pattern('[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$')
+        ),
+        phone: new FormControl(
+          this.contact.phone === 0 ? '' : this.contact.phone,
+          [
+            Validators.minLength(7),
+            Validators.maxLength(8)
+          ]
+        ),
+        adress: new FormControl(
+          this.contact.adress
         )
       })
     });
+  }
+
+  private saveContactsToLocalStorage(): void {
+    localStorage.setItem('contacts', JSON.stringify(this.contacts));
   }
 
 }
