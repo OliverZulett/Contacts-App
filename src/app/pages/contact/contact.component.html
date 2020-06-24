@@ -179,117 +179,127 @@
     <!-- RRSS -->
     <h3>Redes Sociales</h3>
 
-    <div class="d-flex flex-column flex-md-row">
-      <!-- Web site-->
-      <div class="form-group p-3">
-        <label for="webSite">
-          Sitio Web:
-        </label>
-        <input
-          id="webSite"
-          class="form-control"
-          name="webSite"
-          type="text"
-          placeholder="www.example.com"
-          aria-describedby="webSiteHelp"
-        />
-        <small id="webSiteHelp" class="">
-          Ingresa un sitio web
-        </small>
+    <div formGroupName="rrss">
+      
+      <div class="d-flex flex-column flex-md-row">
+        <!-- Web site-->
+        <div class="form-group p-3">
+          <label for="webSite">
+            Sitio Web:
+          </label>
+          <input
+            formControlName="website"
+            id="webSite"
+            class="form-control"
+            name="webSite"
+            type="text"
+            placeholder="http://www.example.com"
+            aria-describedby="webSiteHelp"
+          />
+          <small id="webSiteHelp" class="">
+            Ingresa un sitio web
+          </small>
+        </div>
+  
+        <!-- facebook -->
+        <div class="form-group p-3">
+          <label for="facebook">
+            Facebook:
+          </label>
+          <input
+            formControlName="facebook"
+            id="facebook"
+            class="form-control"
+            name="facebook"
+            type="text"
+            placeholder="http://www.facebook.com/perfil"
+            aria-describedby="facebookHelp"
+          />
+          <small id="facebookHelp" class="">
+            Ingresa un enlace de facebook
+          </small>
+        </div>
+      </div>
+  
+      <div class="d-flex flex-column flex-md-row">
+        <!-- twitter -->
+        <div class="form-group p-3">
+          <label for="twitter">
+            Twitter:
+          </label>
+          <input
+            formControlName="twitter"
+            id="twitter"
+            class="form-control"
+            name="twitter"
+            type="text"
+            placeholder="www.twitter.com"
+            aria-describedby="twitterHelp"
+          />
+          <small id="twitterHelp" class="">
+            Ingresa un enlace de twitter
+          </small>
+        </div>
+  
+        <!-- github -->
+        <div class="form-group p-3">
+          <label for="github">
+            Github:
+          </label>
+          <input
+            formControlName="github"
+            id="github"
+            class="form-control"
+            name="github"
+            type="text"
+            placeholder="www.github.com"
+            aria-describedby="gitHubHelp"
+          />
+          <small id="gitHubHelp" class="">
+            Ingresa un enlace de github
+          </small>
+        </div>
+      </div>
+  
+      <div class="d-flex flex-column flex-md-row">
+        <!-- instagram -->
+        <div class="form-group p-3">
+          <label for="instagram">
+            Instagram:
+          </label>
+          <input
+            formControlName="instagram"
+            id="instagram"
+            class="form-control"
+            name="instagram"
+            type="text"
+            placeholder="www.instagram.com"
+            aria-describedby="instagramHelp"
+          />
+          <small id="instagramHelp" class="">
+            Ingresa un enlace de instagram
+          </small>
+        </div>
+        <!-- youtube -->
+        <div class="form-group p-3">
+          <label for="youtube">
+            Youtube:
+          </label>
+          <input
+            formControlName="youtube"
+            id="youtube"
+            class="form-control"
+            name="youtube"
+            type="text"
+            placeholder="www.youtube.com"
+            aria-describedby="youtubeHelp"
+          />
+          <small id="youtubeHelp" class="">
+            Ingresa un enlace de youtube
+          </small>
+        </div>
       </div>
 
-      <!-- facebook -->
-      <div class="form-group p-3">
-        <label for="facebook">
-          Facebook:
-        </label>
-        <input
-          id="facebook"
-          class="form-control"
-          name="facebook"
-          type="text"
-          placeholder="www.facebook.com"
-          aria-describedby="facebookHelp"
-        />
-        <small id="facebookHelp" class="">
-          Ingresa un enlace de facebook
-        </small>
-      </div>
-    </div>
-
-    <div class="d-flex flex-column flex-md-row">
-      <!-- twitter -->
-      <div class="form-group p-3">
-        <label for="twitter">
-          Twitter:
-        </label>
-        <input
-          id="twitter"
-          class="form-control"
-          name="twitter"
-          type="text"
-          placeholder="www.twitter.com"
-          aria-describedby="twitterHelp"
-        />
-        <small id="twitterHelp" class="">
-          Ingresa un enlace de twitter
-        </small>
-      </div>
-
-      <!-- github -->
-      <div class="form-group p-3">
-        <label for="github">
-          Github:
-        </label>
-        <input
-          id="github"
-          class="form-control"
-          name="github"
-          type="text"
-          placeholder="www.github.com"
-          aria-describedby="gitHubHelp"
-        />
-        <small id="gitHubHelp" class="">
-          Ingresa un enlace de github
-        </small>
-      </div>
-    </div>
-
-    <div class="d-flex flex-column flex-md-row">
-      <!-- instagram -->
-      <div class="form-group p-3">
-        <label for="instagram">
-          Instagram:
-        </label>
-        <input
-          id="instagram"
-          class="form-control"
-          name="instagram"
-          type="text"
-          placeholder="www.instagram.com"
-          aria-describedby="instagramHelp"
-        />
-        <small id="instagramHelp" class="">
-          Ingresa un enlace de instagram
-        </small>
-      </div>
-      <!-- youtube -->
-      <div class="form-group p-3">
-        <label for="youtube">
-          Youtube:
-        </label>
-        <input
-          id="youtube"
-          class="form-control"
-          name="youtube"
-          type="text"
-          placeholder="www.youtube.com"
-          aria-describedby="youtubeHelp"
-        />
-        <small id="youtubeHelp" class="">
-          Ingresa un enlace de youtube
-        </small>
-      </div>
     </div>
 
     <!-- Extra data -->

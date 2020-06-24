@@ -17,7 +17,7 @@ export class ContactComponent implements OnInit {
   contacts: IContact[];
   formContact: FormGroup;
 
-  constructor( private router: ActivatedRoute ) {
+  constructor(private router: ActivatedRoute) {
     this.setId();
     this.loadContacts();
     this.loadContact();
@@ -25,9 +25,10 @@ export class ContactComponent implements OnInit {
   }
 
   updateContact(): void {
-    // console.log(this.formContact);
-    this.contact = {...this.contact, ...this.formContact.value.personalData};
-    const index: number = this.contacts.findIndex( contact => contact.id === this.contact.id);
+    console.log(this.formContact);
+    this.contact = { ...this.contact, ...this.formContact.value.personalData };
+    this.contact = { ...this.contact, ...this.formContact.value.rrss };
+    const index: number = this.contacts.findIndex(contact => contact.id === this.contact.id);
     this.contacts[index] = this.contact;
     this.saveContactsToLocalStorage();
     // console.log(this.contact);
@@ -42,8 +43,8 @@ export class ContactComponent implements OnInit {
   }
 
   private loadContact(): void {
-    this.id.subscribe( id => {
-      this.contact = this.contacts.find( contact => contact.id === id);
+    this.id.subscribe(id => {
+      this.contact = this.contacts.find(contact => contact.id === id);
       console.log(this.contact);
     });
   }
@@ -54,6 +55,7 @@ export class ContactComponent implements OnInit {
 
   private buildForm(): void {
     this.formContact = new FormGroup({
+
       personalData: new FormGroup({
         firstName: new FormControl(
           this.contact.firstName,
@@ -105,12 +107,88 @@ export class ContactComponent implements OnInit {
         adress: new FormControl(
           this.contact.adress
         )
+      }),
+      rrss: new FormGroup({
+        website: new FormControl(
+          this.contact.website,
+          Validators.pattern('^(http|https):\/\/[a-zA-Z0-9_\-]+\.[a-zA-Z0-9_\-]+\.[a-zA-Z0-9_\-]+$')
+        ),
+        facebook: new FormControl(
+          this.contact.facebook,
+          this.invalidFacebookLink
+        ),
+        twitter: new FormControl(
+          this.contact.twitter,
+          this.invalidTwitterLink
+        ),
+        github: new FormControl(
+          this.contact.github,
+          this.invalidGithubLink
+        ),
+        instagram: new FormControl(
+          this.contact.instagram,
+          this.invalidInstagramLink
+        ),
+        youtube: new FormControl(
+          this.contact.youtube,
+          this.invalidYoutubeLink
+        ),
       })
     });
   }
 
   private saveContactsToLocalStorage(): void {
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
+  }
+
+  private invalidFacebookLink( facebookLink: FormControl ): {[s: string]: boolean} {
+    const linkForValidate: string = facebookLink.value || '';
+    if (!linkForValidate.includes('https://www.facebook.com/') && linkForValidate.length > 0) {
+      return {
+        invalidFacebookLink: true
+      };
+    }
+    return null;
+  }
+
+  private invalidTwitterLink( twitterLink: FormControl ): {[s: string]: boolean} {
+    const linkForValidate: string = twitterLink.value || '';
+    if (!linkForValidate.includes('https://twitter.com/') && linkForValidate.length > 0) {
+      return {
+        invalidTwitterLink: true
+      };
+    }
+    return null;
+  }
+
+  private invalidGithubLink( githubLink: FormControl ): {[s: string]: boolean} {
+    const linkForValidate: string = githubLink.value || '';
+    if (!linkForValidate.includes('https://github.com/') && linkForValidate.length > 0) {
+      return {
+        invalidGithubLink: true
+      };
+    }
+    return null;
+  }
+
+  private invalidInstagramLink( instagramLink: FormControl ): {[s: string]: boolean} {
+    const linkForValidate: string = instagramLink.value || '';
+    if (!linkForValidate.includes('https://www.instagram.com/') && linkForValidate.length > 0) {
+      return {
+        invalidInstagramLink: true
+      };
+    }
+    return null;
+  }
+
+  private invalidYoutubeLink( youtubeLink: FormControl ): {[s: string]: boolean} {
+    const linkForValidate: string = youtubeLink.value || '';
+    if (!linkForValidate.includes('https://www.youtube.com/') && linkForValidate.length > 0) {
+      return {
+        invalidYotubeLink: true
+      };
+    }
+    return null;
   }
 
 }

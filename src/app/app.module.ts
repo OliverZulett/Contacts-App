@@ -11,7 +11,6 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ContactCardComponent } from './components/contact-card/contact-card.component';
 import { CreateButtonComponent } from './components/create-button/create-button.component';
 import { CreateContactComponent } from './pages/create-contact/create-contact.component';
-import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
 import { from } from 'rxjs';
 
 @NgModule({
@@ -23,8 +22,7 @@ import { from } from 'rxjs';
     ContactComponent,
     ContactCardComponent,
     CreateButtonComponent,
-    CreateContactComponent,
-    EditContactComponent
+    CreateContactComponent
   ],
   imports: [
     BrowserModule,

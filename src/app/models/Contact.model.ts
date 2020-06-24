@@ -10,11 +10,12 @@ export class Contact implements IContact {
     secondSurname: string;
     phone: number;
     adress: string;
-    webSite: string;
+    website: string;
     facebook: string;
     twitter: string;
     github: string;
     instagram: string;
+    youtube: string;
     notes: string;
     birthday: Date;
     image: string;
@@ -29,11 +30,12 @@ export class Contact implements IContact {
         secondSurname?: string,
         phone?: number,
         adress?: string,
-        webSite?: string,
+        website?: string,
         facebook?: string,
         twitter?: string,
         github?: string,
         instagram?: string,
+        youtube?: string,
         notes?: string,
         birthday?: Date,
         image?: string,
@@ -48,11 +50,12 @@ export class Contact implements IContact {
         this.secondSurname = secondSurname || '';
         this.phone = phone || 0;
         this.adress = adress || '';
-        this.webSite = webSite || '';
+        this.website = website || '';
         this.facebook = facebook || '';
         this.twitter = twitter || '';
         this.github = github || '';
         this.instagram = instagram || '';
+        this.youtube = youtube || '';
         this.notes = notes || '';
         this.image = image || '';
         this.nick = nick || '';
