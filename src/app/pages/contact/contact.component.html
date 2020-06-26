@@ -7,12 +7,14 @@
     />
   </div>
 </div>
-<h1 class="text-center mb-4 mt-4">{{ contact.firstName }} {{contact.firstSurname}}</h1>
+<h1 *ngIf="!contact.nick" class="text-center mb-4 mt-4">{{ contact.firstName }} {{contact.firstSurname}}</h1>
+<h1 *ngIf="contact.nick" class="text-center mb-4 mt-4">{{ contact.nick }}</h1>
 <div class="pl-2 pr-2 pl-md-5 pr-md-5">
   <form 
     [formGroup]="formContact" 
     (ngSubmit)="updateContact()"
     class="d-flex flex-column"
+    autocomplete="off"
   >
     <!-- personal data -->
     <h3>Datos personales</h3>
@@ -305,79 +307,87 @@
     <!-- Extra data -->
     <h3>Datos Extra</h3>
 
-    <div class="d-flex flex-column flex-md-row">
-      <!-- image -->
-      <div class="form-group p-3">
-        <label for="image">
-          Imagen de perfil:
-        </label>
-        <input
-          id="image"
-          class="form-control"
-          name="image"
-          type="text"
-          placeholder="enlace de imagen"
-          aria-describedby="imageHelp"
-        />
-        <small id="imageHelp" class="">
-          Ingresa el enlace de una imagen
-        </small>
-      </div>
+    <div formGroupName="extraData">
+      
+          <div class="d-flex flex-column flex-md-row">
+            <!-- image -->
+            <div class="form-group p-3">
+              <label for="image">
+                Imagen de perfil:
+              </label>
+              <input
+                formControlName="image"
+                id="image"
+                class="form-control"
+                name="image"
+                type="text"
+                placeholder="enlace de imagen"
+                aria-describedby="imageHelp"
+              />
+              <small id="imageHelp" class="">
+                Ingresa el enlace de una imagen
+              </small>
+            </div>
+      
+            <!-- nick -->
+            <div class="form-group p-3">
+              <label for="nick">
+                Nick:
+              </label>
+              <input
+                formControlName="nick"
+                id="nick"
+                class="form-control"
+                name="nick"
+                type="text"
+                placeholder="nick de usuario"
+                aria-describedby="nickHelp"
+              />
+              <small id="nickHelp" class="">
+                Ingresa un nick name
+              </small>
+            </div>
+          </div>
+      
+          <div class="d-flex flex-column">
+            <!-- birthday -->
+            <div class="form-group p-3 w-100">
+              <label for="birthday">
+                cumpleaños:
+              </label>
+              <input
+                formControlName="birthday"
+                id="birthday"
+                class="form-control"
+                name="birthday"
+                type="date"
+                aria-describedby="birthdayHelp"
+                />
+              <small id="birthdayHelp" class="">
+                Ingresa una fecha de cumpleaños
+              </small>
+            </div>
+      
+            <!-- Notes -->
+            <div class="form-group p-3 w-100">
+              <label for="notes">
+                Notas:
+              </label>
+              <textarea
+                formControlName="notes"
+                class="w-100 ml-2"
+                name="notes"
+                id="notes"
+                cols="100"
+                rows="2"
+                aria-describedby="notesHelp"
+              ></textarea>
+              <small id="notesHelp" class="">
+                Ingresa notas del contacto
+              </small>
+            </div>
+          </div>
 
-      <!-- nick -->
-      <div class="form-group p-3">
-        <label for="nick">
-          Nick:
-        </label>
-        <input
-          id="nick"
-          class="form-control"
-          name="nick"
-          type="text"
-          placeholder="nick de usuario"
-          aria-describedby="nickHelp"
-        />
-        <small id="nickHelp" class="">
-          Ingresa un nick name
-        </small>
-      </div>
-    </div>
-
-    <div class="d-flex flex-column">
-      <!-- birthDay -->
-      <div class="form-group p-3 w-100">
-        <label for="birthDay">
-          cumpleaños:
-        </label>
-        <input
-          id="birthDay"
-          class="form-control"
-          name="birthDay"
-          type="date"
-          aria-describedby="birthdayHelp"
-        />
-        <small id="birthdayHelp" class="">
-          Ingresa una fecha de cumpleaños
-        </small>
-      </div>
-
-      <!-- Notes -->
-      <div class="form-group p-3 w-100">
-        <label for="notes">
-          Notas:
-        </label>
-        <textarea
-          class="w-100 ml-2"
-          name="notes"
-          id="notes"
-          cols="100"
-          rows="2"
-          aria-describedby="notesHelp"
-        ></textarea>
-        <small id="notesHelp" class="">
-          Ingresa notas del contacto
-        </small>
-      </div>
     </div>
 
     <!-- send form -->
@@ -390,5 +400,6 @@
         GUARDAR
       </button>
     </div>
+
   </form>
 </div>

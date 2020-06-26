@@ -3,7 +3,8 @@ import { IContact } from '../../models/Contact.interface';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { FormGroup, FormControl, Validators, AsyncValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-contact',
@@ -17,17 +18,23 @@ export class ContactComponent implements OnInit {
   contacts: IContact[];
   formContact: FormGroup;
 
+  // validadores
+  firstNameValidator: boolean;
+
   constructor(private router: ActivatedRoute) {
     this.setId();
     this.loadContacts();
     this.loadContact();
     this.buildForm();
+    // validadores
+    this.firstNameValidator = true;
   }
 
   updateContact(): void {
     console.log(this.formContact);
     this.contact = { ...this.contact, ...this.formContact.value.personalData };
     this.contact = { ...this.contact, ...this.formContact.value.rrss };
+    this.contact = { ...this.contact, ...this.formContact.value.extraData };
     const index: number = this.contacts.findIndex(contact => contact.id === this.contact.id);
     this.contacts[index] = this.contact;
     this.saveContactsToLocalStorage();
@@ -47,6 +54,7 @@ export class ContactComponent implements OnInit {
       this.contact = this.contacts.find(contact => contact.id === id);
       console.log(this.contact);
     });
+
   }
 
   private loadContacts(): void {
@@ -62,7 +70,8 @@ export class ContactComponent implements OnInit {
           [
             Validators.required,
             Validators.minLength(2),
-            Validators.pattern('[A-Za-z]+')
+            Validators.pattern('[A-Za-z]+'),
+            this.firstNameValidatorMessage
           ]
         ),
         secondName: new FormControl(
@@ -133,12 +142,33 @@ export class ContactComponent implements OnInit {
           this.contact.youtube,
           this.invalidYoutubeLink
         ),
+      }),
+      extraData: new FormGroup({
+        image: new FormControl(
+          this.contact.image
+        ),
+        nick: new FormControl(
+          this.contact.nick,
+        ),
+        birthday: new FormControl(
+          !this.birthdayCompare() ? '' : formatDate(this.contact.birthday, 'yyyy-MM-dd', 'en'),
+          [Validators.required]
+        ),
+        notes: new FormControl(
+          this.contact.notes
+        )
       })
     });
+
   }
 
   private saveContactsToLocalStorage(): void {
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
+  }
+
+  private firstNameValidatorMessage( firstName: FormControl ): {[s: string]: boolean} {
+    console.log(firstName);
+    return null;
   }
 
   private invalidFacebookLink( facebookLink: FormControl ): {[s: string]: boolean} {
@@ -189,6 +219,14 @@ export class ContactComponent implements OnInit {
       };
     }
     return null;
+  }
+
+  private birthdayCompare(): boolean {
+    const year = new Date( this.contact.birthday);
+    if (year.getFullYear() === 1001) {
+      return false;
+    }
+    return true;
   }
 
 }

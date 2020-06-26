@@ -14,8 +14,8 @@ export interface IContact {
     github: string;
     instagram: string;
     youtube: string;
-    notes: string;
-    birthday: Date;
     image: string;
     nick: string;
+    birthday: Date;
+    notes: string;
 }

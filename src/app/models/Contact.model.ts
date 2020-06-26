@@ -57,6 +57,7 @@ export class Contact implements IContact {
         this.instagram = instagram || '';
         this.youtube = youtube || '';
         this.notes = notes || '';
+        this.birthday = new Date(1001, 1, 1, 0, 0, 0, 0),
         this.image = image || '';
         this.nick = nick || '';
     }
