@@ -2,3 +2,8 @@ h1 {
     color: var(--first_color);
     font-size: 3.5em;
 }
+
+h2 {
+    color: var(--fifth_color);
+    text-shadow: -0.08em 0.08em var(--first_color);
+}
