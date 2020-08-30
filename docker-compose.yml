@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+
+  contact-app:
+    image: angular-8:0.2
+    container_name: Contacts-App-Container
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    volumes:
+      - '${PWD}:/app'
+      - 'Contact-App-Volume:/app/node_modules'
+    ports:
+      - '4201:4200'
+    # restart: unless-stopped
+
+volumes: 
+    Contact-App-Volume:
+      external: true
+      name: Contact-App-Volume
+
+# command
+# docker-compose up -d --build
