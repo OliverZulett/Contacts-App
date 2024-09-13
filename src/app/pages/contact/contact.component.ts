@@ -3,13 +3,15 @@ import { IContact } from '../../models/Contact.interface';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
-import { formatDate } from '@angular/common';
+import { FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { formatDate, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+    selector: 'app-contact',
+    templateUrl: './contact.component.html',
+    styleUrls: ['./contact.component.css'],
+    standalone: true,
+    imports: [NgIf, FormsModule, ReactiveFormsModule]
 })
 export class ContactComponent implements OnInit {
 

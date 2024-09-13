@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormsModule } from '@angular/forms';
 import { IContact } from '../../models/Contact.interface';
 import { Contact } from '../../models/Contact.model';
 import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-create-contact',
-  templateUrl: './create-contact.component.html',
-  styleUrls: ['./create-contact.component.css']
+    selector: 'app-create-contact',
+    templateUrl: './create-contact.component.html',
+    styleUrls: ['./create-contact.component.css'],
+    standalone: true,
+    imports: [FormsModule, NgIf]
 })
 export class CreateContactComponent implements OnInit {
 

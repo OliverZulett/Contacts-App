@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create-button',
-  templateUrl: './create-button.component.html',
-  styleUrls: ['./create-button.component.css']
+    selector: 'app-create-button',
+    templateUrl: './create-button.component.html',
+    styleUrls: ['./create-button.component.css'],
+    standalone: true
 })
 export class CreateButtonComponent implements OnInit {
 
