@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.css'],
-    standalone: true,
     imports: [RouterLink, FormsModule]
 })
 export class HeaderComponent implements OnInit {

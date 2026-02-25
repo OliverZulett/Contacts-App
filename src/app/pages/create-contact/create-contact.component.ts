@@ -9,7 +9,6 @@ import { NgIf } from '@angular/common';
     selector: 'app-create-contact',
     templateUrl: './create-contact.component.html',
     styleUrls: ['./create-contact.component.css'],
-    standalone: true,
     imports: [FormsModule, NgIf]
 })
 export class CreateContactComponent implements OnInit {

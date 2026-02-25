@@ -7,7 +7,6 @@ import { NgIf } from '@angular/common';
     selector: 'app-contact-card',
     templateUrl: './contact-card.component.html',
     styleUrls: ['./contact-card.component.css'],
-    standalone: true,
     imports: [NgIf]
 })
 export class ContactCardComponent implements OnInit {

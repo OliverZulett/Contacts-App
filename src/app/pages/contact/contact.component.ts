@@ -10,7 +10,6 @@ import { formatDate, NgIf } from '@angular/common';
     selector: 'app-contact',
     templateUrl: './contact.component.html',
     styleUrls: ['./contact.component.css'],
-    standalone: true,
     imports: [NgIf, FormsModule, ReactiveFormsModule]
 })
 export class ContactComponent implements OnInit {

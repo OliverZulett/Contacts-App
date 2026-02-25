@@ -7,7 +7,6 @@ import { ContactCardComponent } from '../../components/contact-card/contact-card
     selector: 'app-contact-list',
     templateUrl: './contact-list.component.html',
     styleUrls: ['./contact-list.component.css'],
-    standalone: true,
     imports: [NgIf, NgFor, ContactCardComponent]
 })
 export class ContactListComponent implements OnInit {
