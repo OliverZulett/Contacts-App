@@ -4,402 +4,406 @@
       [src]="contact.image || '../../../assets/default-profile.png'"
       alt="image-contact"
       srcset=""
-    />
+      />
+    </div>
   </div>
-</div>
-<h1 *ngIf="!contact.nick" class="text-center mb-4 mt-4">{{ contact.firstName }} {{contact.firstSurname}}</h1>
-<h1 *ngIf="contact.nick" class="text-center mb-4 mt-4">{{ contact.nick }}</h1>
-<div class="pl-2 pr-2 pl-md-5 pr-md-5">
-  <form 
-    [formGroup]="formContact" 
-    (ngSubmit)="updateContact()"
-    class="d-flex flex-column"
-    autocomplete="off"
-  >
-    <!-- personal data -->
-    <h3>Datos personales</h3>
-
-    <div formGroupName="personalData">
-      <div  class="d-flex flex-column flex-md-row">
-        <!-- First  Name-->
-        <div class="form-group p-3">
-          <label for="firstName">
-            Primer nombre:
-          </label>
-          <input
-            formControlName="firstName"
-            id="firstName"
-            class="form-control"
-            name="firstName"
-            type="text"
-            placeholder="Primer nombre"
-            aria-describedby="firstNameHelp"
-          />
-          <small id="firstNameHelp" class="">
-            Ingresa el primer nombre
-          </small>
-        </div>
-        <!-- Second Name -->
-        <div class="form-group p-3">
-          <label for="secondName">
-            Segundo nombre:
-          </label>
-          <input
-            formControlName="secondName"
-            id="secondName"
-            class="form-control"
-            name="secondName"
-            type="text"
-            placeholder="Segundo nombre"
-            aria-describedby="secondNameHelp"
-          />
-          <small id="secondNameHelp" class="">
-            Ingresa tu segundo nombre
-          </small>
-        </div>
-      </div>
-  
-      <div class="d-flex flex-column flex-md-row">
-        <!-- First  Surname-->
-        <div class="form-group p-3">
-          <label for="firstSurname">
-            Primer apellido:
-          </label>
-          <input
-            formControlName="firstSurname" 
-            id="firstSurname"
-            class="form-control"
-            name="firstSurname"
-            type="text"
-            placeholder="Primer apellido"
-            aria-describedby="firstSurnameHelp"
-          />
-          <small id="firstSurnameHelp" class="">
-            Ingresa el primer apellido
-          </small>
-        </div>
-  
-        <!-- Second Surname -->
-        <div class="form-group p-3">
-          <label for="secondSurname">
-            Segundo apellido:
-          </label>
-          <input
-            formControlName="secondSurname"
-            id="secondSurname"
-            class="form-control"
-            name="secondSurname"
-            type="text"
-            placeholder="Segundo apellido"
-            aria-describedby="secondSurnameHelp"
-          />
-          <small id="secondSurnameHelp" class="">
-            Ingresa tu segundo apellido
-          </small>
-        </div>
-      </div>
-      
-      <div class="d-flex flex-column flex-md-row">
-        <!--Cell Phone-->
-        <div class="form-group p-3">
-          <label for="cellPhone">
-            Celular:
-          </label>
-          <input
-            formControlName="cellPhone"
-            id="cellPhone"
-            class="form-control"
-            name="cellPhone"
-            type="number"
-            placeholder="0000"
-            aria-describedby="cellPhoneHelp"
-          />
-          <small id="cellPhoneHelp" class="">
-            Ingresa un numero de celular
-          </small>
-        </div>
-  
-        <!-- email -->
-        <div class="form-group p-3">
-          <label for="email">
-            Correo Electrónico
-          </label>
-          <input
-            formControlName="email"
-            id="email"
-            type="email"
-            class="form-control"
-            aria-describedby="emailHelp"
-            placeholder="Example@example.com"
-          />
-          <small id="emailHelp" class="">
-            Ingresa un correo electrónico.
-          </small>
-        </div>
-      </div>
-  
-      <div class="d-flex flex-column flex-md-row">
-        <!--Phone-->
-        <div class="form-group p-3">
-          <label for="phone">
-            Telefono:
-          </label>
-          <input
-            formControlName="phone"
-            id="phone"
-            class="form-control"
-            name="phone"
-            type="text"
-            placeholder="0000"
-            aria-describedby="phoneHelp"
-          />
-          <small id="phoneHelp" class="">
-            Ingresa un numero de telefono
-          </small>
-        </div>
-  
-        <!-- adress -->
-        <div class="form-group p-3">
-          <label for="adress">
-            Dirección:
-          </label>
-          <input
-            formControlName="adress"
-            id="adress"
-            type="text"
-            class="form-control"
-            aria-describedby="adressHelp"
-            placeholder="Av. name, 000"
-          />
-          <small id="adressHelp" class="">
-            Ingresa una dirección.
-          </small>
-        </div>
-      </div>
-    </div>
-
-    <!-- RRSS -->
-    <h3>Redes Sociales</h3>
-
-    <div formGroupName="rrss">
-      
-      <div class="d-flex flex-column flex-md-row">
-        <!-- Web site-->
-        <div class="form-group p-3">
-          <label for="webSite">
-            Sitio Web:
-          </label>
-          <input
-            formControlName="website"
-            id="webSite"
-            class="form-control"
-            name="webSite"
-            type="text"
-            placeholder="http://www.example.com"
-            aria-describedby="webSiteHelp"
-          />
-          <small id="webSiteHelp" class="">
-            Ingresa un sitio web
-          </small>
-        </div>
-  
-        <!-- facebook -->
-        <div class="form-group p-3">
-          <label for="facebook">
-            Facebook:
-          </label>
-          <input
-            formControlName="facebook"
-            id="facebook"
-            class="form-control"
-            name="facebook"
-            type="text"
-            placeholder="http://www.facebook.com/perfil"
-            aria-describedby="facebookHelp"
-          />
-          <small id="facebookHelp" class="">
-            Ingresa un enlace de facebook
-          </small>
-        </div>
-      </div>
-  
-      <div class="d-flex flex-column flex-md-row">
-        <!-- twitter -->
-        <div class="form-group p-3">
-          <label for="twitter">
-            Twitter:
-          </label>
-          <input
-            formControlName="twitter"
-            id="twitter"
-            class="form-control"
-            name="twitter"
-            type="text"
-            placeholder="www.twitter.com"
-            aria-describedby="twitterHelp"
-          />
-          <small id="twitterHelp" class="">
-            Ingresa un enlace de twitter
-          </small>
-        </div>
-  
-        <!-- github -->
-        <div class="form-group p-3">
-          <label for="github">
-            Github:
-          </label>
-          <input
-            formControlName="github"
-            id="github"
-            class="form-control"
-            name="github"
-            type="text"
-            placeholder="www.github.com"
-            aria-describedby="gitHubHelp"
-          />
-          <small id="gitHubHelp" class="">
-            Ingresa un enlace de github
-          </small>
-        </div>
-      </div>
-  
-      <div class="d-flex flex-column flex-md-row">
-        <!-- instagram -->
-        <div class="form-group p-3">
-          <label for="instagram">
-            Instagram:
-          </label>
-          <input
-            formControlName="instagram"
-            id="instagram"
-            class="form-control"
-            name="instagram"
-            type="text"
-            placeholder="www.instagram.com"
-            aria-describedby="instagramHelp"
-          />
-          <small id="instagramHelp" class="">
-            Ingresa un enlace de instagram
-          </small>
-        </div>
-        <!-- youtube -->
-        <div class="form-group p-3">
-          <label for="youtube">
-            Youtube:
-          </label>
-          <input
-            formControlName="youtube"
-            id="youtube"
-            class="form-control"
-            name="youtube"
-            type="text"
-            placeholder="www.youtube.com"
-            aria-describedby="youtubeHelp"
-          />
-          <small id="youtubeHelp" class="">
-            Ingresa un enlace de youtube
-          </small>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Extra data -->
-    <h3>Datos Extra</h3>
-
-    <div formGroupName="extraData">
-      
-          <div class="d-flex flex-column flex-md-row">
-            <!-- image -->
-            <div class="form-group p-3">
-              <label for="image">
-                Imagen de perfil:
-              </label>
-              <input
-                formControlName="image"
-                id="image"
-                class="form-control"
-                name="image"
-                type="text"
-                placeholder="enlace de imagen"
-                aria-describedby="imageHelp"
-              />
-              <small id="imageHelp" class="">
-                Ingresa el enlace de una imagen
-              </small>
-            </div>
-      
-            <!-- nick -->
-            <div class="form-group p-3">
-              <label for="nick">
-                Nick:
-              </label>
-              <input
-                formControlName="nick"
-                id="nick"
-                class="form-control"
-                name="nick"
-                type="text"
-                placeholder="nick de usuario"
-                aria-describedby="nickHelp"
-              />
-              <small id="nickHelp" class="">
-                Ingresa un nick name
-              </small>
-            </div>
-          </div>
-      
-          <div class="d-flex flex-column">
-            <!-- birthday -->
-            <div class="form-group p-3 w-100">
-              <label for="birthday">
-                cumpleaños:
-              </label>
-              <input
-                formControlName="birthday"
-                id="birthday"
-                class="form-control"
-                name="birthday"
-                type="date"
-                aria-describedby="birthdayHelp"
-                />
-              <small id="birthdayHelp" class="">
-                Ingresa una fecha de cumpleaños
-              </small>
-            </div>
-      
-            <!-- Notes -->
-            <div class="form-group p-3 w-100">
-              <label for="notes">
-                Notas:
-              </label>
-              <textarea
-                formControlName="notes"
-                class="w-100 ml-2"
-                name="notes"
-                id="notes"
-                cols="100"
-                rows="2"
-                aria-describedby="notesHelp"
-              ></textarea>
-              <small id="notesHelp" class="">
-                Ingresa notas del contacto
-              </small>
-            </div>
-          </div>
-
-    </div>
-
-    <!-- send form -->
-    <div class="text-center mt-4">
-      <button 
-        [disabled]="formContact.invalid"
-        type="submit"
-        class="btn draw-border mt-2 mt-sm-0" 
+  @if (!contact.nick) {
+    <h1 class="text-center mb-4 mt-4">{{ contact.firstName }} {{contact.firstSurname}}</h1>
+  }
+  @if (contact.nick) {
+    <h1 class="text-center mb-4 mt-4">{{ contact.nick }}</h1>
+  }
+  <div class="pl-2 pr-2 pl-md-5 pr-md-5">
+    <form
+      [formGroup]="formContact"
+      (ngSubmit)="updateContact()"
+      class="d-flex flex-column"
+      autocomplete="off"
       >
-        GUARDAR
-      </button>
-    </div>
+      <!-- personal data -->
+      <h3>Datos personales</h3>
 
-  </form>
-</div>
+      <div formGroupName="personalData">
+        <div  class="d-flex flex-column flex-md-row">
+          <!-- First  Name-->
+          <div class="form-group p-3">
+            <label for="firstName">
+              Primer nombre:
+            </label>
+            <input
+              formControlName="firstName"
+              id="firstName"
+              class="form-control"
+              name="firstName"
+              type="text"
+              placeholder="Primer nombre"
+              aria-describedby="firstNameHelp"
+              />
+              <small id="firstNameHelp" class="">
+                Ingresa el primer nombre
+              </small>
+            </div>
+            <!-- Second Name -->
+            <div class="form-group p-3">
+              <label for="secondName">
+                Segundo nombre:
+              </label>
+              <input
+                formControlName="secondName"
+                id="secondName"
+                class="form-control"
+                name="secondName"
+                type="text"
+                placeholder="Segundo nombre"
+                aria-describedby="secondNameHelp"
+                />
+                <small id="secondNameHelp" class="">
+                  Ingresa tu segundo nombre
+                </small>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column flex-md-row">
+              <!-- First  Surname-->
+              <div class="form-group p-3">
+                <label for="firstSurname">
+                  Primer apellido:
+                </label>
+                <input
+                  formControlName="firstSurname"
+                  id="firstSurname"
+                  class="form-control"
+                  name="firstSurname"
+                  type="text"
+                  placeholder="Primer apellido"
+                  aria-describedby="firstSurnameHelp"
+                  />
+                  <small id="firstSurnameHelp" class="">
+                    Ingresa el primer apellido
+                  </small>
+                </div>
+
+                <!-- Second Surname -->
+                <div class="form-group p-3">
+                  <label for="secondSurname">
+                    Segundo apellido:
+                  </label>
+                  <input
+                    formControlName="secondSurname"
+                    id="secondSurname"
+                    class="form-control"
+                    name="secondSurname"
+                    type="text"
+                    placeholder="Segundo apellido"
+                    aria-describedby="secondSurnameHelp"
+                    />
+                    <small id="secondSurnameHelp" class="">
+                      Ingresa tu segundo apellido
+                    </small>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-column flex-md-row">
+                  <!--Cell Phone-->
+                  <div class="form-group p-3">
+                    <label for="cellPhone">
+                      Celular:
+                    </label>
+                    <input
+                      formControlName="cellPhone"
+                      id="cellPhone"
+                      class="form-control"
+                      name="cellPhone"
+                      type="number"
+                      placeholder="0000"
+                      aria-describedby="cellPhoneHelp"
+                      />
+                      <small id="cellPhoneHelp" class="">
+                        Ingresa un numero de celular
+                      </small>
+                    </div>
+
+                    <!-- email -->
+                    <div class="form-group p-3">
+                      <label for="email">
+                        Correo Electrónico
+                      </label>
+                      <input
+                        formControlName="email"
+                        id="email"
+                        type="email"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        placeholder="Example@example.com"
+                        />
+                        <small id="emailHelp" class="">
+                          Ingresa un correo electrónico.
+                        </small>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-column flex-md-row">
+                      <!--Phone-->
+                      <div class="form-group p-3">
+                        <label for="phone">
+                          Telefono:
+                        </label>
+                        <input
+                          formControlName="phone"
+                          id="phone"
+                          class="form-control"
+                          name="phone"
+                          type="text"
+                          placeholder="0000"
+                          aria-describedby="phoneHelp"
+                          />
+                          <small id="phoneHelp" class="">
+                            Ingresa un numero de telefono
+                          </small>
+                        </div>
+
+                        <!-- adress -->
+                        <div class="form-group p-3">
+                          <label for="adress">
+                            Dirección:
+                          </label>
+                          <input
+                            formControlName="adress"
+                            id="adress"
+                            type="text"
+                            class="form-control"
+                            aria-describedby="adressHelp"
+                            placeholder="Av. name, 000"
+                            />
+                            <small id="adressHelp" class="">
+                              Ingresa una dirección.
+                            </small>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- RRSS -->
+                      <h3>Redes Sociales</h3>
+
+                      <div formGroupName="rrss">
+
+                        <div class="d-flex flex-column flex-md-row">
+                          <!-- Web site-->
+                          <div class="form-group p-3">
+                            <label for="webSite">
+                              Sitio Web:
+                            </label>
+                            <input
+                              formControlName="website"
+                              id="webSite"
+                              class="form-control"
+                              name="webSite"
+                              type="text"
+                              placeholder="http://www.example.com"
+                              aria-describedby="webSiteHelp"
+                              />
+                              <small id="webSiteHelp" class="">
+                                Ingresa un sitio web
+                              </small>
+                            </div>
+
+                            <!-- facebook -->
+                            <div class="form-group p-3">
+                              <label for="facebook">
+                                Facebook:
+                              </label>
+                              <input
+                                formControlName="facebook"
+                                id="facebook"
+                                class="form-control"
+                                name="facebook"
+                                type="text"
+                                placeholder="http://www.facebook.com/perfil"
+                                aria-describedby="facebookHelp"
+                                />
+                                <small id="facebookHelp" class="">
+                                  Ingresa un enlace de facebook
+                                </small>
+                              </div>
+                            </div>
+
+                            <div class="d-flex flex-column flex-md-row">
+                              <!-- twitter -->
+                              <div class="form-group p-3">
+                                <label for="twitter">
+                                  Twitter:
+                                </label>
+                                <input
+                                  formControlName="twitter"
+                                  id="twitter"
+                                  class="form-control"
+                                  name="twitter"
+                                  type="text"
+                                  placeholder="www.twitter.com"
+                                  aria-describedby="twitterHelp"
+                                  />
+                                  <small id="twitterHelp" class="">
+                                    Ingresa un enlace de twitter
+                                  </small>
+                                </div>
+
+                                <!-- github -->
+                                <div class="form-group p-3">
+                                  <label for="github">
+                                    Github:
+                                  </label>
+                                  <input
+                                    formControlName="github"
+                                    id="github"
+                                    class="form-control"
+                                    name="github"
+                                    type="text"
+                                    placeholder="www.github.com"
+                                    aria-describedby="gitHubHelp"
+                                    />
+                                    <small id="gitHubHelp" class="">
+                                      Ingresa un enlace de github
+                                    </small>
+                                  </div>
+                                </div>
+
+                                <div class="d-flex flex-column flex-md-row">
+                                  <!-- instagram -->
+                                  <div class="form-group p-3">
+                                    <label for="instagram">
+                                      Instagram:
+                                    </label>
+                                    <input
+                                      formControlName="instagram"
+                                      id="instagram"
+                                      class="form-control"
+                                      name="instagram"
+                                      type="text"
+                                      placeholder="www.instagram.com"
+                                      aria-describedby="instagramHelp"
+                                      />
+                                      <small id="instagramHelp" class="">
+                                        Ingresa un enlace de instagram
+                                      </small>
+                                    </div>
+                                    <!-- youtube -->
+                                    <div class="form-group p-3">
+                                      <label for="youtube">
+                                        Youtube:
+                                      </label>
+                                      <input
+                                        formControlName="youtube"
+                                        id="youtube"
+                                        class="form-control"
+                                        name="youtube"
+                                        type="text"
+                                        placeholder="www.youtube.com"
+                                        aria-describedby="youtubeHelp"
+                                        />
+                                        <small id="youtubeHelp" class="">
+                                          Ingresa un enlace de youtube
+                                        </small>
+                                      </div>
+                                    </div>
+
+                                  </div>
+
+                                  <!-- Extra data -->
+                                  <h3>Datos Extra</h3>
+
+                                  <div formGroupName="extraData">
+
+                                    <div class="d-flex flex-column flex-md-row">
+                                      <!-- image -->
+                                      <div class="form-group p-3">
+                                        <label for="image">
+                                          Imagen de perfil:
+                                        </label>
+                                        <input
+                                          formControlName="image"
+                                          id="image"
+                                          class="form-control"
+                                          name="image"
+                                          type="text"
+                                          placeholder="enlace de imagen"
+                                          aria-describedby="imageHelp"
+                                          />
+                                          <small id="imageHelp" class="">
+                                            Ingresa el enlace de una imagen
+                                          </small>
+                                        </div>
+
+                                        <!-- nick -->
+                                        <div class="form-group p-3">
+                                          <label for="nick">
+                                            Nick:
+                                          </label>
+                                          <input
+                                            formControlName="nick"
+                                            id="nick"
+                                            class="form-control"
+                                            name="nick"
+                                            type="text"
+                                            placeholder="nick de usuario"
+                                            aria-describedby="nickHelp"
+                                            />
+                                            <small id="nickHelp" class="">
+                                              Ingresa un nick name
+                                            </small>
+                                          </div>
+                                        </div>
+
+                                        <div class="d-flex flex-column">
+                                          <!-- birthday -->
+                                          <div class="form-group p-3 w-100">
+                                            <label for="birthday">
+                                              cumpleaños:
+                                            </label>
+                                            <input
+                                              formControlName="birthday"
+                                              id="birthday"
+                                              class="form-control"
+                                              name="birthday"
+                                              type="date"
+                                              aria-describedby="birthdayHelp"
+                                              />
+                                              <small id="birthdayHelp" class="">
+                                                Ingresa una fecha de cumpleaños
+                                              </small>
+                                            </div>
+
+                                            <!-- Notes -->
+                                            <div class="form-group p-3 w-100">
+                                              <label for="notes">
+                                                Notas:
+                                              </label>
+                                              <textarea
+                                                formControlName="notes"
+                                                class="w-100 ml-2"
+                                                name="notes"
+                                                id="notes"
+                                                cols="100"
+                                                rows="2"
+                                                aria-describedby="notesHelp"
+                                              ></textarea>
+                                              <small id="notesHelp" class="">
+                                                Ingresa notas del contacto
+                                              </small>
+                                            </div>
+                                          </div>
+
+                                        </div>
+
+                                        <!-- send form -->
+                                        <div class="text-center mt-4">
+                                          <button
+                                            [disabled]="formContact.invalid"
+                                            type="submit"
+                                            class="btn draw-border mt-2 mt-sm-0"
+                                            >
+                                            GUARDAR
+                                          </button>
+                                        </div>
+
+                                      </form>
+                                    </div>

@@ -4,13 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { formatDate, NgIf } from '@angular/common';
+import { formatDate } from '@angular/common';
 
 @Component({
     selector: 'app-contact',
     templateUrl: './contact.component.html',
     styleUrls: ['./contact.component.css'],
-    imports: [NgIf, FormsModule, ReactiveFormsModule]
+    imports: [FormsModule, ReactiveFormsModule]
 })
 export class ContactComponent implements OnInit {
 

@@ -2,47 +2,53 @@
   <div class="contact-image d-flex justify-content-center">
     <div class="d-flex justify-content-center align-content-center pt-4 pb-2">
       <img
-        [src]="contact.image || '../../../assets/default-profile.png'"  
+        [src]="contact.image || '../../../assets/default-profile.png'"
         alt="contact-image"
         srcset=""
-      />
+        />
+      </div>
+    </div>
+    <div class="contact-info d-flex flex-column text-center">
+      <h3 class="name">
+        {{contact.firstName}}
+      </h3>
+      @if (contact.cellPhone) {
+        <p class="phone m-0">
+          <i class="fa fa-phone"></i>
+          +591 {{contact.cellPhone}}
+        </p>
+      }
+      @if (contact.email) {
+        <p class="email m-0">
+          <i class="fa fa-envelope-open"></i>
+          {{contact.email}}
+        </p>
+      }
+    </div>
+    @if (contact.facebook || contact.instagram) {
+      <div class="contact-links d-flex justify-content-center mt-1 mb-1">
+        <ul class="d-flex m-0 p-0">
+          <li class="ml-2 mr-2">
+            <a href="">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li class="ml-2 mr-2">
+            <a href="">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li class="ml-2 mr-2">
+            <a href="">
+              <i class="fa fa-instagram"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    }
+    <div class="contact-details d-flex justify-content-center mb-4 mt-3">
+      <button (click)="navigate()" type="button" class="btn draw-border mt-2 mt-sm-0">
+        DETALLES
+      </button>
     </div>
   </div>
-  <div class="contact-info d-flex flex-column text-center">
-    <h3 class="name">
-      {{contact.firstName}}
-    </h3>
-    <p *ngIf="contact.cellPhone" class="phone m-0">
-      <i class="fa fa-phone"></i>
-      +591 {{contact.cellPhone}}
-    </p>
-    <p *ngIf="contact.email" class="email m-0">
-      <i class="fa fa-envelope-open"></i>
-      {{contact.email}}
-    </p>
-  </div>
-  <div *ngIf="contact.facebook || contact.instagram" class="contact-links d-flex justify-content-center mt-1 mb-1">
-    <ul class="d-flex m-0 p-0">
-      <li class="ml-2 mr-2">
-        <a href="">
-          <i class="fa fa-facebook"></i>
-        </a>
-      </li>
-      <li class="ml-2 mr-2">
-        <a href="">
-          <i class="fa fa-twitter"></i>
-        </a>
-      </li>
-      <li class="ml-2 mr-2">
-        <a href="">
-          <i class="fa fa-instagram"></i>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="contact-details d-flex justify-content-center mb-4 mt-3">
-    <button (click)="navigate()" type="button" class="btn draw-border mt-2 mt-sm-0">
-      DETALLES
-    </button>
-  </div>
-</div>

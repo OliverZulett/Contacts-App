@@ -1,7 +1,11 @@
 <h1 class="text-center mt-3 mb-3">Tus Contactos</h1>
 <div class="d-flex flex-wrap justify-content-center">
-    <h2 *ngIf="contacts.length === 0">
-        Aún no tiene contactos registrados por que no agregas uno nuevo?
+  @if (contacts.length === 0) {
+    <h2>
+      Aún no tiene contactos registrados por que no agregas uno nuevo?
     </h2>
-    <app-contact-card *ngFor="let contact of sortContacts()" [contact]="contact"></app-contact-card>
+  }
+  @for (contact of sortContacts(); track contact) {
+    <app-contact-card [contact]="contact"></app-contact-card>
+  }
 </div>

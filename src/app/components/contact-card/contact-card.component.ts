@@ -1,13 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { IContact } from 'src/app/models/Contact.interface';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-contact-card',
     templateUrl: './contact-card.component.html',
     styleUrls: ['./contact-card.component.css'],
-    imports: [NgIf]
+    imports: []
 })
 export class ContactCardComponent implements OnInit {
 
